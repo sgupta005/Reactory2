@@ -23,7 +23,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SignInValues, signInSchema } from '../schemas';
-
+import { signIn } from '../actions';
 export default function SignInForm() {
   const form = useForm<SignInValues>({
     resolver: zodResolver(signInSchema),
@@ -34,8 +34,7 @@ export default function SignInForm() {
   });
 
   function onSubmit(values: SignInValues) {
-    // Handle sign in
-    console.log(values);
+    signIn(values);
   }
 
   return (
