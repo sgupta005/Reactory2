@@ -10,10 +10,34 @@ import {
   CardTitle,
   CardFooter,
 } from '@/components/ui/card';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
 import SocialSignIn from './SocialSignIn';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { SignInValues, signInSchema } from '../schemas';
 
 export default function SignInForm() {
+  const form = useForm<SignInValues>({
+    resolver: zodResolver(signInSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+
+  function onSubmit(values: SignInValues) {
+    // Handle sign in
+    console.log(values);
+  }
+
   return (
     <Card className="w-[400px]">
       <CardHeader>
@@ -25,15 +49,39 @@ export default function SignInForm() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form className="space-y-4">
-          <div className="space-y-2">
-            <Input type="email" placeholder="Email" />
-            <Input type="password" placeholder="Password" />
-          </div>
-          <Button className="w-full">Sign In</Button>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input placeholder="Email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input type="password" placeholder="Password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit" className="w-full">
+              Sign In
+            </Button>
 
-          <SocialSignIn />
-        </form>
+            <SocialSignIn />
+          </form>
+        </Form>
       </CardContent>
       <CardFooter className="flex justify-center">
         <p className="text-sm text-muted-foreground">
