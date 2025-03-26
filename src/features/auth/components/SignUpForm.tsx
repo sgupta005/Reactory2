@@ -23,7 +23,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SignUpValues, signUpSchema } from '../schemas';
-import { signUp } from '../actions';
+
 export default function SignUpForm() {
   const form = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
@@ -34,18 +34,16 @@ export default function SignUpForm() {
     },
   });
 
-  function onSubmit(values: SignUpValues) {
-    signUp(values);
-  }
+  function onSubmit(values: SignUpValues) {}
 
   return (
     <Card className="w-[400px]">
       <CardHeader>
         <CardTitle className="text-2xl text-center">
-          Create an account
+          Welcome to Reactory
         </CardTitle>
         <CardDescription className="text-center">
-          Enter your details below
+          Create your account
         </CardDescription>
       </CardHeader>
       <CardContent>

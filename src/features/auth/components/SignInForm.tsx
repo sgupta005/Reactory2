@@ -15,7 +15,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from '@/components/ui/form';
 import SocialSignIn from './SocialSignIn';
@@ -23,7 +22,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SignInValues, signInSchema } from '../schemas';
-import { signIn } from '../actions';
+
 export default function SignInForm() {
   const form = useForm<SignInValues>({
     resolver: zodResolver(signInSchema),
@@ -33,9 +32,7 @@ export default function SignInForm() {
     },
   });
 
-  function onSubmit(values: SignInValues) {
-    signIn(values);
-  }
+  function onSubmit(values: SignInValues) {}
 
   return (
     <Card className="w-[400px]">

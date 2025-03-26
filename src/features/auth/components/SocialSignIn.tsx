@@ -2,7 +2,8 @@
 
 import { Button } from '@/components/ui/button';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-
+import { signInWithGoogle } from '../actions';
+import { signIn } from 'next-auth/react';
 export default function SocialSignIn() {
   return (
     <>
@@ -18,7 +19,11 @@ export default function SocialSignIn() {
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        <Button variant="outline" type="button">
+        <Button
+          variant="outline"
+          type="button"
+          onClick={() => signIn('google')}
+        >
           <FaGoogle className="mr-2 h-4 w-4" />
           Google
         </Button>
