@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1742979740402,
-      "tag": "0000_chubby_thaddeus_ross",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1742980792664,
-      "tag": "0001_slow_epoch",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1742980845205,
-      "tag": "0002_old_famine",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1742982444374,
-      "tag": "0003_windy_marvex",
+      "when": 1743013801268,
+      "tag": "0000_violet_gwen_stacy",
       "breakpoints": true
     }
   ]
