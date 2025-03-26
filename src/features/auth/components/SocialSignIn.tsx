@@ -2,9 +2,10 @@
 
 import { Button } from '@/components/ui/button';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { signInWithGoogle } from '../actions';
-import { signIn } from 'next-auth/react';
+
+import { useSignInWithProvider } from '../hooks/useSignInWithProvider';
 export default function SocialSignIn() {
+  const { isLoading, signInWithProvider } = useSignInWithProvider();
   return (
     <>
       <div className="relative my-4">
@@ -22,13 +23,28 @@ export default function SocialSignIn() {
         <Button
           variant="outline"
           type="button"
-          onClick={() => signIn('google')}
+          onClick={() => signInWithProvider('google')}
+          disabled={isLoading === 'google'}
         >
-          <FaGoogle className="mr-2 h-4 w-4" />
+          {isLoading === 'google' ? (
+            <div className="h-4 w-4 animate-spin rounded-full border-2 border-muted border-t-current" />
+          ) : (
+            <FaGoogle className="mr-2 h-4 w-4" />
+          )}
           Google
         </Button>
-        <Button variant="outline" type="button">
-          <FaGithub className="mr-2 h-4 w-4" />
+
+        <Button
+          variant="outline"
+          type="button"
+          onClick={() => signInWithProvider('github')}
+          disabled={isLoading === 'github'}
+        >
+          {isLoading === 'github' ? (
+            <div className="h-4 w-4 animate-spin rounded-full border-2 border-muted border-t-current" />
+          ) : (
+            <FaGithub className="mr-2 h-4 w-4" />
+          )}
           Github
         </Button>
       </div>
