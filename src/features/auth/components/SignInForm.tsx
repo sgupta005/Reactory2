@@ -119,7 +119,7 @@ export default function SignInForm() {
             transition={{ delay: 0.4, duration: 0.5 }}
           >
             <CardDescription className="text-center text-base mt-2">
-              Sign in to access your dashboard and projects
+              Sign in to submit your components
             </CardDescription>
           </motion.div>
         </CardHeader>
