@@ -1,7 +1,8 @@
 'use client';
 
-import { ComponentCard } from '@/components/ComponentCard';
+import { ComponentCard } from '@/features/components-showcase/components/ComponentCard';
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 interface Component {
   id: string;
@@ -52,21 +53,7 @@ export function ComponentGrid({ title, components, id }: ComponentGridProps) {
             whileHover={{ x: 3 }}
           >
             View all
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="ml-1"
-            >
-              <path d="M5 12h14" />
-              <path d="m12 5 7 7-7 7" />
-            </svg>
+            <ArrowRight className="w-4 h-4" />
           </motion.button>
         </div>
 

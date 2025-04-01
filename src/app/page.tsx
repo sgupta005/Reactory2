@@ -1,5 +1,5 @@
 import { Navbar } from '@/components/Navbar';
-import { ComponentGrid } from '@/components/ComponentGrid';
+import { ComponentGrid } from '@/features/components-showcase/components/ComponentGrid';
 import { Hero } from '@/components/Hero';
 
 // Mock data for demonstration purposes

@@ -30,7 +30,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-4 ">
           <Link href="/sign-in">
-            <Button variant="secondary" size="sm">
+            <Button variant="secondary" className="cursor-pointer" size="sm">
               Sign In
             </Button>
           </Link>

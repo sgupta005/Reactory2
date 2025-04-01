@@ -73,7 +73,12 @@ export function Hero() {
             animate={{ opacity: 0.7 }}
             transition={{ delay: 1, duration: 0.5 }}
           >
-            <Button variant="ghost" size="icon" onClick={scrollToComponents}>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={scrollToComponents}
+              className="cursor-pointer"
+            >
               <ArrowDown />
             </Button>
           </motion.div>
