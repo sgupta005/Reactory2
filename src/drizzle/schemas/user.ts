@@ -7,11 +7,13 @@ import {
   primaryKey,
   uuid,
 } from 'drizzle-orm/pg-core';
-import { id, createdAt } from '../schemaHelper';
+import { id, createdAt, name } from '../schemaHelper';
+import { relations } from 'drizzle-orm';
+import { ComponentTable } from './component';
 
 export const UserTable = pgTable('users', {
   id: id,
-  name: varchar('name', { length: 255 }),
+  name: name,
   email: varchar('email', { length: 255 }).notNull().unique(),
   emailVerified: timestamp('emailVerified', { mode: 'date' }),
   image: text('image'),
@@ -62,6 +64,10 @@ export const VerificationTokenTable = pgTable(
     compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   })
 );
+
+export const UserRelations = relations(UserTable, ({ many }) => ({
+  components: many(ComponentTable),
+}));
 
 export const users = UserTable;
 export const accounts = AccountTable;
