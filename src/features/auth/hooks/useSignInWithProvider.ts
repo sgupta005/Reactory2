@@ -8,7 +8,7 @@ export const useSignInWithProvider = () => {
   const signInWithProvider = async (provider: 'google' | 'github') => {
     try {
       setIsLoading(provider);
-      await signIn(provider);
+      await signIn(provider, { redirectTo: '/' });
     } catch (error) {
       toast.error(`Failed to sign in with ${provider}`);
     } finally {
