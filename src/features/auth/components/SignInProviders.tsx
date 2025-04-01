@@ -61,14 +61,8 @@ export default function SignInProviders() {
               type="button"
               onClick={() => signInWithProvider('google')}
               disabled={isLoading === 'google'}
-              className="w-full border-2 relative overflow-hidden group"
+              className="w-full border-2 relative overflow-hidden  cursor-pointer"
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-red-600/10 opacity-0 group-hover:opacity-100"
-                initial={{ x: '-100%' }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3 }}
-              />
               {isLoading === 'google' ? (
                 <div className="h-4 w-4 animate-spin rounded-full border-2 border-muted border-t-current" />
               ) : (
@@ -97,14 +91,8 @@ export default function SignInProviders() {
               type="button"
               onClick={() => signInWithProvider('github')}
               disabled={isLoading === 'github'}
-              className="w-full border-2 relative overflow-hidden group"
+              className="w-full border-2 relative overflow-hidden cursor-pointer"
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-gray-500/10 to-gray-900/10 opacity-0 group-hover:opacity-100"
-                initial={{ x: '-100%' }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3 }}
-              />
               {isLoading === 'github' ? (
                 <div className="h-4 w-4 animate-spin rounded-full border-2 border-muted border-t-current" />
               ) : (
