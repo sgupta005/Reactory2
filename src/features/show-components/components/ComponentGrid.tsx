@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentCard } from '@/features/components-showcase/components/ComponentCard';
+import { ComponentCard } from '@/features/show-components/components/ComponentCard';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 

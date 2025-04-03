@@ -1,6 +1,7 @@
 import { Navbar } from '@/components/Navbar';
-import { ComponentGrid } from '@/features/components-showcase/components/ComponentGrid';
+
 import { Hero } from '@/components/Hero';
+import { ComponentGrid } from '@/features/show-components/components/ComponentGrid';
 
 // Mock data for demonstration purposes
 const newComponents = [
@@ -90,7 +91,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 ">
         <Hero />
         <ComponentGrid
           title="New Components"
