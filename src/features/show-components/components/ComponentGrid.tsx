@@ -32,8 +32,6 @@ export function ComponentGrid({ title, components, id }: ComponentGridProps) {
 
   return (
     <section id={id} className="py-12 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-muted/20 to-background opacity-50 pointer-events-none" />
-
       <div className="container px-4 md:px-6 relative z-10">
         <div className="flex items-center justify-between mb-8">
           <motion.div

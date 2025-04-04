@@ -36,13 +36,13 @@ export default function SignInForm() {
             transition={{ delay: 0.2, duration: 0.5 }}
           >
             <motion.div
-              className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/80 to-secondary/80 mx-auto mb-4 flex items-center justify-center"
+              className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-primary/5 mx-auto mb-4 flex items-center justify-center"
               whileHover={{ scale: 1.05 }}
             >
               <span className="text-4xl font-bold text-white">R</span>
             </motion.div>
             <CardTitle className="text-3xl text-center font-bold">
-              <span className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+              <span className="inline-block bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
                 Welcome to Reactory
               </span>
             </CardTitle>

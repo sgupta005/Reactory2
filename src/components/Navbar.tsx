@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 export function Navbar() {
   return (
     <motion.header
-      className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur"
+      className="sticky top-0 z-50 w-full border-b backdrop-blur bg-background/70"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
@@ -30,7 +30,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-4 ">
           <Link href="/sign-in">
-            <Button variant="secondary" className="cursor-pointer" size="sm">
+            <Button variant="outline" className="cursor-pointer" size="sm">
               Sign In
             </Button>
           </Link>

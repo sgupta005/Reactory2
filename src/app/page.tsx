@@ -45,51 +45,9 @@ const newComponents = [
   },
 ];
 
-const popularComponents = [
-  {
-    id: '5',
-    title: 'Data Table Pro',
-    description: 'Advanced data table with sorting, filtering, and pagination.',
-    upvotes: 754,
-    views: 3452,
-    imageUrl:
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500&auto=format&fit=crop',
-  },
-  {
-    id: '6',
-    title: 'Modal Dialog',
-    description:
-      'Accessible modal dialog with customizable content and animations.',
-    upvotes: 682,
-    views: 2984,
-    imageUrl:
-      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=500&auto=format&fit=crop',
-  },
-  {
-    id: '7',
-    title: 'Form Wizard',
-    description:
-      'Multi-step form wizard with validation and progress tracking.',
-    upvotes: 541,
-    views: 2321,
-    imageUrl:
-      'https://images.unsplash.com/photo-1587440871875-191322ee64b0?q=80&w=500&auto=format&fit=crop',
-  },
-  {
-    id: '8',
-    title: 'Dropdown Menu',
-    description:
-      'Customizable dropdown menu with animations and keyboard navigation.',
-    upvotes: 487,
-    views: 2105,
-    imageUrl:
-      'https://images.unsplash.com/photo-1618172193763-c511deb635ca?q=80&w=500&auto=format&fit=crop',
-  },
-];
-
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col ">
       <Navbar />
       <main className="flex-1 ">
         <Hero />
@@ -100,7 +58,7 @@ export default function Home() {
         />
         <ComponentGrid
           title="Most Popular"
-          components={popularComponents}
+          components={newComponents}
           id="popular-components"
         />
       </main>

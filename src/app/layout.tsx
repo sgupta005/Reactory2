@@ -7,8 +7,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`antialiased`}>
+    <html lang="en" suppressHydrationWarning className="no-scrollbar">
+      <body className={`antialiased `}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
