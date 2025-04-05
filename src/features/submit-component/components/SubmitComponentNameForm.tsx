@@ -16,6 +16,10 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Check, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
 const submitComponentNameSchema = submitComponentSchema.pick({
   name: true,
   description: true,
@@ -31,11 +35,21 @@ export function SubmitComponentNameForm() {
       name: '',
       description: '',
     },
+    mode: 'onChange', // Enable real-time validation
   });
+
+  const {
+    watch,
+    formState: { errors, isSubmitted },
+  } = form;
+  const nameValue = watch('name');
+  const descriptionValue = watch('description');
+
   function onSubmit(data: SubmitComponentNameSchema) {
     console.log(data);
     router.push('/submit/code');
   }
+
   return (
     <Form {...form}>
       <form
@@ -46,16 +60,44 @@ export function SubmitComponentNameForm() {
           control={form.control}
           name="name"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="relative">
               <FormLabel className="text-base font-semibold">Name</FormLabel>
               <FormControl>
-                <Input
-                  {...field}
-                  placeholder="My Component"
-                  className="h-11 px-4 bg-background/50 backdrop-blur-sm border-2 placeholder:text-muted-foreground/50 focus:border-primary/50 focus:bg-background "
-                />
+                <div className="relative">
+                  <Input
+                    autoFocus
+                    {...field}
+                    placeholder="My Component"
+                    className="h-11 px-4 bg-background/50 backdrop-blur-sm border-2 placeholder:text-muted-foreground/50 focus:bg-background pr-10 transition-colors duration-200"
+                  />
+                  <AnimatePresence>
+                    {nameValue && nameValue.length >= 3 && !errors.name && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.5 }}
+                        className="absolute right-3 top-1/2 -translate-y-1/2"
+                      >
+                        <div className="bg-green-500/20 p-1 rounded-full">
+                          <Check className="w-4 h-4 text-green-500" />
+                        </div>
+                      </motion.div>
+                    )}
+                    {isSubmitted && errors.name && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.5 }}
+                        className="absolute right-3 top-1/2 -translate-y-1/2"
+                      >
+                        <div className="bg-red-500/20 p-1 rounded-full">
+                          <X className="w-4 h-4 text-red-400" />
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -63,16 +105,32 @@ export function SubmitComponentNameForm() {
           control={form.control}
           name="description"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="relative">
               <FormLabel className="text-base font-semibold">
                 Description (Optional)
               </FormLabel>
               <FormControl>
-                <Textarea
-                  {...field}
-                  placeholder="What does your component do? What problems does it solve?"
-                  className="min-h-[120px] px-4 py-3 bg-background/50 backdrop-blur-sm border-2 placeholder:text-muted-foreground/50 focus:border-primary/50 focus:bg-background resize-none"
-                />
+                <div className="relative">
+                  <Textarea
+                    {...field}
+                    placeholder="What does your component do? What problems does it solve?"
+                    className="min-h-[120px] px-4 py-3 bg-background/50 backdrop-blur-sm border-2 placeholder:text-muted-foreground/50 focus:border-primary/50 focus:bg-background resize-none pr-10"
+                  />
+                  <AnimatePresence>
+                    {descriptionValue && descriptionValue.length >= 10 && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.5 }}
+                        className="absolute right-3 top-4"
+                      >
+                        <div className="bg-green-500/20 p-1 rounded-full">
+                          <Check className="w-4 h-4 text-green-500" />
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </FormControl>
               <FormMessage className="text-sm" />
             </FormItem>
