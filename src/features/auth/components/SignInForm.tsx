@@ -11,6 +11,7 @@ import {
 import SignInProviders from './SignInProviders';
 import { Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Logo } from '@/components/Logo';
 
 export default function SignInForm() {
   return (
@@ -35,14 +36,9 @@ export default function SignInForm() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <motion.div
-              className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-primary/5 mx-auto mb-4 flex items-center justify-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <span className="text-4xl font-bold text-white">R</span>
-            </motion.div>
+            <Logo />
             <CardTitle className="text-3xl text-center font-bold">
-              <span className="inline-block bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
+              <span className="inline-block bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
                 Welcome to Reactory
               </span>
             </CardTitle>

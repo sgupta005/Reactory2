@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Search } from 'lucide-react';
 import { motion } from 'framer-motion';
-
+import Reactory from '@/components/Reactory';
 export function Navbar() {
   return (
     <motion.header
@@ -16,11 +16,7 @@ export function Navbar() {
     >
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-2">
-          <Link href="/" className="flex items-center">
-            <span className="text-xl font-bold text-foreground/80">
-              Reactory
-            </span>
-          </Link>
+          <Reactory />
         </div>
 
         <div className="relative w-full max-w-sm mx-4">

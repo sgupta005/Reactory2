@@ -32,7 +32,7 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="max-w-4xl"
           >
-            <p className="bg-primary dark:bg-gradient-to-b dark:from-neutral-200 dark:to-neutral-500 bg-clip-text py-8 text-4xl font-bold text-transparent sm:text-7xl">
+            <p className="bg-primary dark:bg-gradient-to-b  dark:from-neutral-500 dark:to-neutral-200 bg-clip-text py-8 text-4xl font-bold text-transparent sm:text-7xl">
               Your One Stop Destination for React Components.
             </p>
             <p className="font-semibold text-neutral-500 sm:text-3xl text-xl mt-6">
@@ -48,17 +48,13 @@ export function Hero() {
           >
             <Button
               size="lg"
-              className="h-12 px-8 cursor-pointer"
+              className="h-12 px-8 "
               onClick={scrollToComponents}
             >
               Browse Components
             </Button>
             <Link href="/submit/name">
-              <Button
-                variant="outline"
-                size="lg"
-                className="h-12 px-8 cursor-pointer"
-              >
+              <Button variant="outline" size="lg" className="h-12 px-8 ">
                 Submit Your Component
               </Button>
             </Link>
@@ -71,12 +67,7 @@ export function Hero() {
         animate={{ opacity: 0.7 }}
         transition={{ delay: 1, duration: 0.5 }}
       >
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={scrollToComponents}
-          className="cursor-pointer"
-        >
+        <Button variant="ghost" size="icon" onClick={scrollToComponents}>
           <ArrowDown />
         </Button>
       </motion.div>

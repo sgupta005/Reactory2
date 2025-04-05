@@ -38,15 +38,22 @@ export function SubmitComponentNameForm() {
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-4 flex flex-col"
+      >
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel className="text-base font-semibold">Name</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="My Component" />
+                <Input
+                  {...field}
+                  placeholder="My Component"
+                  className="h-11 px-4 bg-background/50 backdrop-blur-sm border-2 placeholder:text-muted-foreground/50 focus:border-primary/50 focus:bg-background "
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -57,14 +64,23 @@ export function SubmitComponentNameForm() {
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Description</FormLabel>
+              <FormLabel className="text-base font-semibold">
+                Description (Optional)
+              </FormLabel>
               <FormControl>
-                <Textarea {...field} />
+                <Textarea
+                  {...field}
+                  placeholder="What does your component do? What problems does it solve?"
+                  className="min-h-[120px] px-4 py-3 bg-background/50 backdrop-blur-sm border-2 placeholder:text-muted-foreground/50 focus:border-primary/50 focus:bg-background resize-none"
+                />
               </FormControl>
+              <FormMessage className="text-sm" />
             </FormItem>
           )}
         />
-        <Button type="submit">Next</Button>
+        <Button type="submit" className="mr-0 ml-auto">
+          Next
+        </Button>
       </form>
     </Form>
   );
