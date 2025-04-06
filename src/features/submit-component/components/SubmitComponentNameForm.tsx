@@ -18,10 +18,17 @@ import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, X } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import {
+  Select,
+  SelectValue,
+  SelectTrigger,
+  SelectItem,
+  SelectContent,
+} from '@/components/ui/select';
 
 const submitComponentNameSchema = submitComponentSchema.pick({
   name: true,
+  language: true,
   description: true,
 });
 
@@ -34,6 +41,7 @@ export function SubmitComponentNameForm() {
     defaultValues: {
       name: '',
       description: '',
+      language: 'javascript',
     },
     mode: 'onChange', // Enable real-time validation
   });
@@ -97,6 +105,26 @@ export function SubmitComponentNameForm() {
                     )}
                   </AnimatePresence>
                 </div>
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="language"
+          render={({ field }) => (
+            <FormItem className="relative">
+              <FormLabel className="text-base font-semibold">Name</FormLabel>
+              <FormControl>
+                <Select>
+                  <SelectTrigger className="w-full cursor-pointer">
+                    <SelectValue placeholder="Language" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="javascript">JavaScript</SelectItem>
+                    <SelectItem value="typescript">TypeScript</SelectItem>
+                  </SelectContent>
+                </Select>
               </FormControl>
             </FormItem>
           )}
