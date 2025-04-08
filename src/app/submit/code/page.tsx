@@ -2,75 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import {
-  SandpackProvider,
-  SandpackCodeEditor,
-  SandpackPreview,
-} from '@codesandbox/sandpack-react';
-import { useState } from 'react';
-import { Code, Eye } from 'lucide-react';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import AddFiles from '@/features/submit-component/components/AddFiles';
+import { SandpackProvider } from '@codesandbox/sandpack-react';
 import { Button } from '@/components/ui/button';
-function SandpackWrapper() {
-  const [activeTab, setActiveTab] = useState('editor');
-
-  return (
-    <div className="border rounded-lg overflow-hidden flex flex-col bg-background/80">
-      <div className="p-2 border-b">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <div className="flex items-center justify-between">
-            <TabsList>
-              <TabsTrigger
-                value="editor"
-                className="flex items-center gap-2 cursor-pointer"
-              >
-                <Code className="w-4 h-4" /> Editor
-              </TabsTrigger>
-              <TabsTrigger
-                value="preview"
-                className="flex items-center gap-2 cursor-pointer"
-              >
-                <Eye className="w-4 h-4" /> Preview
-              </TabsTrigger>
-            </TabsList>
-            <AddFiles />
-          </div>
-
-          <div className="relative mt-2" style={{ height: '530px' }}>
-            <div
-              className="absolute inset-0 transition-opacity duration-300"
-              style={{
-                opacity: activeTab === 'editor' ? 1 : 0,
-                pointerEvents: activeTab === 'editor' ? 'auto' : 'none',
-              }}
-            >
-              <SandpackCodeEditor
-                showLineNumbers={true}
-                showInlineErrors={true}
-                wrapContent={true}
-                style={{ height: '530px' }}
-              />
-            </div>
-
-            <div
-              className="absolute inset-0 transition-opacity duration-300"
-              style={{
-                opacity: activeTab === 'preview' ? 1 : 0,
-                pointerEvents: activeTab === 'preview' ? 'auto' : 'none',
-              }}
-            >
-              <SandpackPreview
-                showNavigator={true}
-                style={{ height: '530px' }}
-              />
-            </div>
-          </div>
-        </Tabs>
-      </div>
-    </div>
-  );
-}
+import SandpackWrapper from '@/features/submit-component/components/SandpackWrapper';
 
 export default function SubmitComponentCode() {
   const router = useRouter();
