@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import Reactory from '@/components/Reactory';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
+
 export function Navbar() {
   return (
     <motion.header
@@ -18,6 +20,7 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-4 ">
+          <ThemeToggle />
           <Link href="/sign-in">
             <Button className="rounded-4xl font-semibold" size="lg">
               Sign In
