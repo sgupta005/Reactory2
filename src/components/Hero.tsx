@@ -13,14 +13,12 @@ export function Hero() {
         transition={{ duration: 0.5 }}
       >
         <motion.h1
-          className="text-4xl md:text-6xl font-bold tracking-tight"
+          className="text-4xl md:text-6xl font-bold tracking-tight md:w-4/5 mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Discover the web's top
-          <br />
-          react components
+          Discover the web's top react components
         </motion.h1>
         <motion.p
           className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto"

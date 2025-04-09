@@ -1,6 +1,8 @@
 import { ThemeProvider } from '@/components/ui/theme-provider';
 import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
+import { SessionProvider } from '@/providers/SessionProvider';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -9,15 +11,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="no-scrollbar">
       <body className={`antialiased `}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <main>{children}</main>
-          <Toaster />
-        </ThemeProvider>
+        <SessionProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <main>{children}</main>
+            <Toaster />
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );
