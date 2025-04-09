@@ -1,79 +1,104 @@
 'use client';
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { ComponentCard } from '@/features/show-components/components/ComponentCard';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
 
-interface Component {
-  id: string;
-  title: string;
-  description: string;
-  upvotes: number;
-  views: number;
-  imageUrl: string;
-}
+const SAMPLE_COMPONENTS = [
+  {
+    id: 'responsive-navbar',
+    title: 'Responsive Navbar',
+    description: 'Clean and responsive navigation with mobile menu',
+    author: 'ReactMaster',
+    hearts: 482,
+    views: 4200,
+  },
+  {
+    id: 'data-table',
+    title: 'Data Table',
+    description: 'Sortable and filterable table component with pagination',
+    author: 'DataViz',
+    hearts: 593,
+    views: 6800,
+  },
+  {
+    id: 'modal-dialog',
+    title: 'Modal Dialog',
+    description: 'Accessible modal with animations and backdrop',
+    author: 'UIExpert',
+    hearts: 347,
+    views: 3500,
+  },
+  {
+    id: 'form-builder',
+    title: 'Form Builder',
+    description: 'Dynamic form with validation and custom inputs',
+    author: 'FormCrafter',
+    hearts: 268,
+    views: 2900,
+  },
+  {
+    id: 'notification-toast',
+    title: 'Notification Toast',
+    description: 'Customizable toast notifications with auto-dismiss',
+    author: 'Notifier',
+    hearts: 425,
+    views: 4800,
+  },
+  {
+    id: 'theme-switcher',
+    title: 'Theme Switcher',
+    description: 'Dark/light mode toggle with system preference detection',
+    author: 'ThemeWizard',
+    hearts: 312,
+    views: 3200,
+  },
+];
 
-interface ComponentGridProps {
-  title: string;
-  components: Component[];
-  id?: string;
-}
-
-export function ComponentGrid({ title, components, id }: ComponentGridProps) {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
+export function ComponentGrid() {
   return (
-    <section id={id} className="py-12 relative overflow-hidden">
-      <div className="container px-4 md:px-6 relative z-10">
-        <div className="flex items-center justify-between mb-8">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="relative"
-          >
-            <h2 className="text-3xl font-bold tracking-tight">{title}</h2>
-          </motion.div>
-
-          <motion.button
-            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 flex items-center gap-1"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            whileHover={{ x: 3 }}
-          >
-            View all
-            <ArrowRight className="w-4 h-4" />
-          </motion.button>
-        </div>
-
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8"
-          variants={container}
-          initial="hidden"
-          animate="show"
-        >
-          {components.map((component) => (
-            <ComponentCard
-              key={component.id}
-              id={component.id}
-              title={component.title}
-              description={component.description}
-              upvotes={component.upvotes}
-              views={component.views}
-              imageUrl={component.imageUrl}
-            />
-          ))}
-        </motion.div>
-      </div>
-    </section>
+    <>
+      <motion.div
+        className="mt-16 flex overflow-x-auto gap-2 justify-start"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <Select defaultValue="popular">
+          <SelectTrigger className="px-4 cursor-pointer">
+            <SelectValue placeholder="Filter by" />
+          </SelectTrigger>
+          <SelectContent className="cursor-pointer">
+            <SelectItem value="popular">Popular</SelectItem>
+            <SelectItem value="new">New</SelectItem>
+          </SelectContent>
+        </Select>
+      </motion.div>
+      <motion.div
+        className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20 auto-rows-fr"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.2 }}
+      >
+        {SAMPLE_COMPONENTS.map((component, index) => (
+          <ComponentCard
+            key={component.id}
+            id={component.id}
+            title={component.title}
+            description={component.description}
+            author={component.author}
+            hearts={component.hearts}
+            views={component.views}
+            index={index}
+          />
+        ))}
+      </motion.div>
+    </>
   );
 }

@@ -1,32 +1,25 @@
 'use client';
 
 import Link from 'next/link';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Reactory from '@/components/Reactory';
 export function Navbar() {
   return (
     <motion.header
-      className="sticky top-0 z-50 w-full border-b backdrop-blur bg-background/70"
+      className="sticky top-0 z-50 w-full border-b border-border/40 backdrop-blur bg-background/70"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="container flex h-16 items-center justify-between px-4 md:px-6">
+      <div className="py-4 px-6 md:px-12 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Reactory />
         </div>
 
-        <div className="relative w-full max-w-sm mx-4">
-          <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input placeholder="Search components..." className="pl-8 w-full" />
-        </div>
-
         <div className="flex items-center gap-4 ">
           <Link href="/sign-in">
-            <Button variant="outline" className="cursor-pointer" size="sm">
+            <Button className="rounded-4xl font-semibold" size="lg">
               Sign In
             </Button>
           </Link>

@@ -38,9 +38,7 @@ export default function SignInForm() {
           >
             <Logo />
             <CardTitle className="text-3xl text-center font-bold">
-              <span className="inline-block bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
-                Welcome to Reactory
-              </span>
+              <span className="inline-block">Welcome to Reactory</span>
             </CardTitle>
           </motion.div>
           <motion.div

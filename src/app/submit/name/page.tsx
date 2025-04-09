@@ -33,9 +33,7 @@ export default function SubmitComponentName() {
           </div>
         </div>
         <div>
-          <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
-            Submit Your Component
-          </h1>
+          <h1 className="text-3xl font-bold ">Submit Your Component</h1>
           <p className="mt-3 text-muted-foreground">
             Let's start with the basics. Give your component a name and
             description.
