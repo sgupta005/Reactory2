@@ -1,7 +1,7 @@
 import { ThemeProvider } from '@/components/ui/theme-provider';
 import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
-import { SessionProvider } from '@/providers/SessionProvider';
+import { SessionProvider } from 'next-auth/react';
 
 export default function RootLayout({
   children,

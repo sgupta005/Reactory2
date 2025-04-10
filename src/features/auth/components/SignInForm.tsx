@@ -24,7 +24,7 @@ export default function SignInForm() {
       <Card className="w-[400px] overflow-hidden relative bg-gradient-to-br from-background to-background/70">
         {/* Decorative line */}
         <motion.div
-          className="absolute top-0 left-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary"
+          className="absolute top-0 left-0 h-1 bg-gradient-to-r from-primary via-primary/10 dark:via-secondary to-primary"
           initial={{ width: 0 }}
           animate={{ width: '100%' }}
           transition={{ duration: 1, delay: 0.2 }}
