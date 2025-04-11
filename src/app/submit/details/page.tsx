@@ -1,18 +1,17 @@
 'use client';
 
-import { SubmitComponentNameForm } from '@/features/submit-component/components/SubmitComponentNameForm';
+import SubmitComponentDetailsForm from '@/features/submit-component/components/SubmitComponentDetailsForm';
 import { motion } from 'framer-motion';
 
-export default function SubmitComponentName() {
+export default function SubmitComponentDetails() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* <Card className="container max-w-xl px-8 py-8 bg-gradient-to-br from-background to-background/70 relative"> */}
       <motion.div
-        className="mb-8 text-center space-y-4 pt-[3rem]"
+        className="mb-8 text-center space-y-4 pt-6"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
@@ -45,7 +44,7 @@ export default function SubmitComponentName() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <SubmitComponentNameForm />
+        <SubmitComponentDetailsForm />
       </motion.div>
       {/* </Card> */}
     </motion.div>

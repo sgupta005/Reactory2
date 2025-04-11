@@ -34,7 +34,7 @@ const submitComponentNameSchema = submitComponentSchema.pick({
 
 type SubmitComponentNameSchema = z.infer<typeof submitComponentNameSchema>;
 
-export function SubmitComponentNameForm() {
+export default function SubmitComponentDetailsForm() {
   const router = useRouter();
   const form = useForm<SubmitComponentNameSchema>({
     resolver: zodResolver(submitComponentNameSchema),

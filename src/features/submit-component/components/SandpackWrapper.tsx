@@ -32,7 +32,7 @@ export default function SandpackWrapper() {
             <AddFiles />
           </div>
 
-          <div className="relative mt-2" style={{ height: '530px' }}>
+          <div className="relative mt-2" style={{ height: '500px' }}>
             <div
               className="absolute inset-0 transition-opacity duration-300"
               style={{
@@ -44,7 +44,7 @@ export default function SandpackWrapper() {
                 showLineNumbers={true}
                 showInlineErrors={true}
                 wrapContent={true}
-                style={{ height: '530px' }}
+                style={{ height: '500px' }}
               />
             </div>
 
@@ -57,7 +57,7 @@ export default function SandpackWrapper() {
             >
               <SandpackPreview
                 showNavigator={true}
-                style={{ height: '530px' }}
+                style={{ height: '500px' }}
               />
             </div>
           </div>

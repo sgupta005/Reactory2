@@ -13,7 +13,7 @@ export default function SubmitComponentCode() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="w-full max-w-7xl mx-auto px-4 flex flex-col pt-[3rem] h-screen"
+      className="w-full max-w-7xl mx-auto px-4 flex flex-col pt-6"
     >
       <motion.div
         className="mb-4 text-center space-y-3"
@@ -70,7 +70,7 @@ export default function SubmitComponentCode() {
       >
         <SandpackWrapper />
       </SandpackProvider>
-      <div className="flex items-center justify-center gap-3 mr-0 ml-auto mt-4">
+      <div className="flex items-center justify-center gap-3 mr-0 ml-auto mt-4 pb-4">
         <Button variant="outline" size="lg" onClick={() => router.back()}>
           Back
         </Button>

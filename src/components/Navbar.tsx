@@ -14,11 +14,12 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { LogOut, User } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export function Navbar() {
   const { data: session, status } = useSession();
   const isLoading = status === 'loading';
-
+  const router = useRouter();
   return (
     <motion.header
       className="sticky top-0 z-50 w-full border-b border-border/40 backdrop-blur bg-background/70"
@@ -72,7 +73,10 @@ export function Navbar() {
                   {session.user?.name}
                 </div>
 
-                <DropdownMenuItem className="cursor-pointer focus:bg-muted">
+                <DropdownMenuItem
+                  className="cursor-pointer focus:bg-muted"
+                  onClick={() => router.push(`/profile/${session.user?.id}`)}
+                >
                   <User className="mr-2 h-4 w-4" />
                   <span>Profile</span>
                 </DropdownMenuItem>

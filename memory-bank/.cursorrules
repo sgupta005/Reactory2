@@ -1,0 +1,43 @@
+# .cursorrules - Project Intelligence for Reactory2
+
+## Project Patterns
+
+- Next.js 15 App Router architecture
+- TypeScript for type safety
+- TailwindCSS for styling
+- Radix UI components for UI primitives
+- Drizzle ORM for database access
+- NextAuth for authentication
+
+## File Organization
+
+- `/src/app` - Routes and page components
+- `/src/components` - Reusable UI components
+- `/src/lib` - Utility functions and shared logic
+- `/src/drizzle` - Database schema and configuration
+- `/src/features` - Feature-specific components
+- `/memory-bank` - Project documentation and context
+
+## Naming Conventions
+
+To be determined based on codebase exploration.
+
+## Code Style Preferences
+
+To be determined based on codebase exploration.
+
+## Workflow Patterns
+
+To be determined based on user interaction.
+
+## Known Challenges
+
+To be identified through development.
+
+## Project-Specific Insights
+
+This section will be updated as we work with the codebase and discover important patterns and preferences.
+
+## Notes
+
+This document serves as a learning journal and will be updated as we discover more about the project's specific patterns and requirements.
