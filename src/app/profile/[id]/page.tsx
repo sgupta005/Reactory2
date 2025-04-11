@@ -110,14 +110,10 @@ const SAMPLE_COMPONENTS = [
   },
 ];
 
-async function ProfilePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string }>;
-}) {
+async function ProfilePage({ params }: { params: { id: string } }) {
   const session = await auth();
-  const { id } = await searchParams;
-  const isOwnProfile = id === session?.user?.id;
+  const profileId = params.id;
+  const isOwnProfile = session?.user?.id === profileId;
 
   return (
     <div className="min-h-screen flex flex-col">
