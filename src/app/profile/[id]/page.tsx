@@ -114,12 +114,17 @@ async function ProfilePage({ params }: { params: { id: string } }) {
   const session = await auth();
   const profileId = params.id;
   const isOwnProfile = session?.user?.id === profileId;
+  const isLoggedIn = !!session;
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 md:px-6 pt-8 pb-20">
-        <ProfileHeader isOwnProfile={isOwnProfile} user={SAMPLE_USER} />
+        <ProfileHeader
+          isOwnProfile={isOwnProfile}
+          user={SAMPLE_USER}
+          isLoggedIn={isLoggedIn}
+        />
         <ProfileStats user={SAMPLE_USER} />
         <ProfileComponents
           isOwnProfile={isOwnProfile}

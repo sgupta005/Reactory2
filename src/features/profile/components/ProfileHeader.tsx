@@ -19,8 +19,10 @@ import Link from 'next/link';
 type ProfileHeaderProps = {
   isOwnProfile: boolean;
   user: any;
+  isLoggedIn: boolean;
 };
-function ProfileHeader({ isOwnProfile, user }: ProfileHeaderProps) {
+
+function ProfileHeader({ isOwnProfile, user, isLoggedIn }: ProfileHeaderProps) {
   const router = useRouter();
   return (
     <motion.div
@@ -43,7 +45,7 @@ function ProfileHeader({ isOwnProfile, user }: ProfileHeaderProps) {
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 justify-between mb-4">
             <h1 className="text-3xl font-bold">{user.name}</h1>
             <div className="flex gap-2">
-              {isOwnProfile ? (
+              {isOwnProfile && (
                 <Button
                   variant="outline"
                   size="sm"
@@ -53,7 +55,8 @@ function ProfileHeader({ isOwnProfile, user }: ProfileHeaderProps) {
                   <PenSquare className="w-4 h-4" />
                   Edit Profile
                 </Button>
-              ) : (
+              )}
+              {!isOwnProfile && isLoggedIn && (
                 <Button size="sm" className="gap-1">
                   <UserPlus className="w-4 h-4" />
                   Follow
