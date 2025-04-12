@@ -1,3 +1,4 @@
+'use client';
 import { useSandpack } from '@codesandbox/sandpack-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -35,7 +36,7 @@ export default function AddFiles() {
         size="sm"
         variant="outline"
         onClick={handleAddFile}
-        className="flex items-center gap-1"
+        className="flex items-center gap-1 hover:bg-muted"
       >
         <Plus className="w-4 h-4" /> Add
       </Button>
