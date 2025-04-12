@@ -7,14 +7,27 @@ import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { useSubmitComponentStore } from '@/features/submit/store';
+import { useEffect } from 'react';
 
 export default function SubmitComponentCode() {
   const { theme } = useTheme();
   const router = useRouter();
-  const data = useSubmitComponentStore((state) => state);
-  function handleSubmit() {
-    console.log(data);
-  }
+
+  const name = useSubmitComponentStore((state) => state.name);
+  const language = useSubmitComponentStore((state) => state.language);
+  const description = useSubmitComponentStore((state) => state.description);
+
+  useEffect(
+    function () {
+      if (!useSubmitComponentStore.persist.hasHydrated()) return;
+      if (!name || !language) {
+        router.push('/submit/details');
+      }
+    },
+    [name, language, router, useSubmitComponentStore.persist.hasHydrated]
+  );
+
+  function handleSubmit() {}
   return (
     <div className="w-full max-w-7xl mx-auto px-4 flex flex-col pt-6">
       <StepShower

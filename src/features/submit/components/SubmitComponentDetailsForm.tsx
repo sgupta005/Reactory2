@@ -26,6 +26,8 @@ import {
   SelectContent,
 } from '@/components/ui/select';
 import { useSubmitComponentStore } from '../store';
+import { useEffect } from 'react';
+
 const submitComponentNameSchema = submitComponentSchema.pick({
   name: true,
   language: true,
@@ -36,6 +38,12 @@ type SubmitComponentNameSchema = z.infer<typeof submitComponentNameSchema>;
 
 export default function SubmitComponentDetailsForm() {
   const router = useRouter();
+
+  const name = useSubmitComponentStore((state) => state.name);
+  const language = useSubmitComponentStore((state) => state.language);
+  const description = useSubmitComponentStore((state) => state.description);
+  const setData = useSubmitComponentStore((state) => state.setData);
+
   const form = useForm<SubmitComponentNameSchema>({
     resolver: zodResolver(submitComponentNameSchema),
     defaultValues: {
@@ -43,8 +51,18 @@ export default function SubmitComponentDetailsForm() {
       description: '',
       language: 'javascript',
     },
-    mode: 'onChange', // Enable real-time validation
+    mode: 'onChange',
   });
+
+  useEffect(() => {
+    if (useSubmitComponentStore.persist.hasHydrated()) {
+      form.reset({
+        name: name || '',
+        description: description || '',
+        language: language || 'javascript',
+      });
+    }
+  }, [form, name, description, language]);
 
   const {
     watch,
@@ -52,7 +70,6 @@ export default function SubmitComponentDetailsForm() {
   } = form;
   const nameValue = watch('name');
   const descriptionValue = watch('description');
-  const setData = useSubmitComponentStore((state) => state.setData);
 
   function onSubmit(data: SubmitComponentNameSchema) {
     setData(data);
@@ -121,9 +138,14 @@ export default function SubmitComponentDetailsForm() {
             name="language"
             render={({ field }) => (
               <FormItem className="relative">
-                <FormLabel className="text-base font-semibold">Name</FormLabel>
+                <FormLabel className="text-base font-semibold">
+                  Language
+                </FormLabel>
                 <FormControl>
-                  <Select>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
                     <SelectTrigger className="w-full cursor-pointer">
                       <SelectValue placeholder="Language" />
                     </SelectTrigger>
