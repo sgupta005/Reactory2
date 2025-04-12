@@ -2,14 +2,19 @@
 
 import { SandpackProvider } from '@codesandbox/sandpack-react';
 import SandpackWrapper from '@/features/sandpack/components/SandpackWrapper';
-import StepShower from '@/features/submit-component/components/StepShower';
+import StepShower from '@/features/submit/components/StepShower';
 import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
+import { useSubmitComponentStore } from '@/features/submit/store';
 
 export default function SubmitComponentCode() {
   const { theme } = useTheme();
   const router = useRouter();
+  const data = useSubmitComponentStore((state) => state);
+  function handleSubmit() {
+    console.log(data);
+  }
   return (
     <div className="w-full max-w-7xl mx-auto px-4 flex flex-col pt-6">
       <StepShower
@@ -45,7 +50,9 @@ export default function SubmitComponentCode() {
         <Button variant="outline" size="lg" onClick={() => router.back()}>
           Back
         </Button>
-        <Button size="lg">Submit</Button>
+        <Button size="lg" onClick={handleSubmit}>
+          Submit
+        </Button>
       </div>
     </div>
   );

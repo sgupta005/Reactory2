@@ -1,5 +1,5 @@
-import SubmitComponentDetailsForm from '@/features/submit-component/components/SubmitComponentDetailsForm';
-import StepShower from '@/features/submit-component/components/StepShower';
+import SubmitComponentDetailsForm from '@/features/submit/components/SubmitComponentDetailsForm';
+import StepShower from '@/features/submit/components/StepShower';
 
 export default function SubmitComponentDetails() {
   return (

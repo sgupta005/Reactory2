@@ -25,7 +25,7 @@ import {
   SelectItem,
   SelectContent,
 } from '@/components/ui/select';
-
+import { useSubmitComponentStore } from '../store';
 const submitComponentNameSchema = submitComponentSchema.pick({
   name: true,
   language: true,
@@ -52,9 +52,10 @@ export default function SubmitComponentDetailsForm() {
   } = form;
   const nameValue = watch('name');
   const descriptionValue = watch('description');
+  const setData = useSubmitComponentStore((state) => state.setData);
 
   function onSubmit(data: SubmitComponentNameSchema) {
-    console.log(data);
+    setData(data);
     router.push('/submit/code');
   }
 
@@ -127,8 +128,18 @@ export default function SubmitComponentDetailsForm() {
                       <SelectValue placeholder="Language" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="javascript">JavaScript</SelectItem>
-                      <SelectItem value="typescript">TypeScript</SelectItem>
+                      <SelectItem
+                        value="javascript"
+                        className="focus:bg-muted cursor-pointer"
+                      >
+                        JavaScript
+                      </SelectItem>
+                      <SelectItem
+                        value="typescript"
+                        className="focus:bg-muted cursor-pointer"
+                      >
+                        TypeScript
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </FormControl>
@@ -148,7 +159,7 @@ export default function SubmitComponentDetailsForm() {
                     <Textarea
                       {...field}
                       placeholder="What does your component do? What problems does it solve?"
-                      className="min-h-[120px] px-4 py-3 bg-background/50 backdrop-blur-sm border-2 placeholder:text-muted-foreground/50 focus:border-primary/50 focus:bg-background resize-none pr-10"
+                      className="min-h-[120px] min-w-[445px] px-4 py-3 bg-background/50 backdrop-blur-sm border-2 placeholder:text-muted-foreground/50 focus:border-primary/50 focus:bg-background resize-none pr-10"
                     />
                     <AnimatePresence>
                       {descriptionValue && descriptionValue.length >= 10 && (
