@@ -73,10 +73,10 @@ export async function Navbar() {
                     {session.user?.name}
                   </div>
 
-                  <DropdownMenuItem className="cursor-pointer focus:bg-muted">
+                  <DropdownMenuItem className="cursor-pointer focus:bg-muted p-0">
                     <Link
                       href={`/profile/${session.user?.id}`}
-                      className="flex items-center gap-2"
+                      className="flex items-center gap-2 w-full px-1.5 py-2"
                     >
                       <User className="mr-2 h-4 w-4" />
                       <span>Profile</span>
@@ -84,7 +84,7 @@ export async function Navbar() {
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
 
-                  <DropdownMenuItem className="cursor-pointer focus:bg-muted">
+                  <DropdownMenuItem className="cursor-pointer focus:bg-muted p-0">
                     <Logout />
                   </DropdownMenuItem>
                 </DropdownMenuContent>

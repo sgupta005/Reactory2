@@ -2,6 +2,7 @@ import { ThemeProvider } from '@/components/ui/theme-provider';
 import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
 import { SessionProvider } from 'next-auth/react';
+import { SandPackCSS } from '@/components/SandpackStyles';
 
 export default function RootLayout({
   children,
@@ -10,6 +11,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="no-scrollbar">
+      <head>
+        <SandPackCSS />
+      </head>
       <body className={`antialiased `}>
         <SessionProvider>
           <ThemeProvider
