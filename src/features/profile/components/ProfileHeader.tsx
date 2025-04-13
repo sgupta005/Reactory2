@@ -1,10 +1,5 @@
-'use client';
-
-import { AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Avatar } from '@/components/ui/avatar';
-import { motion } from 'framer-motion';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { formatDate } from '@/lib/utils';
 import {
   PenSquare,
   UserPlus,
@@ -13,7 +8,8 @@ import {
   Package,
   Users,
 } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import * as motion from 'motion/react-client';
+import { formatDate } from '@/lib/utils';
 import Link from 'next/link';
 
 type ProfileHeaderProps = {
@@ -23,7 +19,6 @@ type ProfileHeaderProps = {
 };
 
 function ProfileHeader({ isOwnProfile, user, isLoggedIn }: ProfileHeaderProps) {
-  const router = useRouter();
   return (
     <motion.div
       className="w-full"
@@ -46,14 +41,11 @@ function ProfileHeader({ isOwnProfile, user, isLoggedIn }: ProfileHeaderProps) {
             <h1 className="text-3xl font-bold">{user.name}</h1>
             <div className="flex gap-2">
               {isOwnProfile && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => router.push('/edit')}
-                  className="gap-1"
-                >
-                  <PenSquare className="w-4 h-4" />
-                  Edit Profile
+                <Button variant="outline" size="sm" className="gap-1">
+                  <Link href="/edit" className="flex items-center gap-1">
+                    <PenSquare className="w-4 h-4" />
+                    Edit Profile
+                  </Link>
                 </Button>
               )}
               {!isOwnProfile && isLoggedIn && (

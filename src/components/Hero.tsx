@@ -1,7 +1,5 @@
-'use client';
-
 import SearchComponents from './SearchComponents';
-import { motion } from 'framer-motion';
+import * as motion from 'motion/react-client';
 
 export function Hero() {
   return (

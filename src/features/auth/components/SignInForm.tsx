@@ -1,5 +1,3 @@
-'use client';
-
 import {
   Card,
   CardContent,
@@ -8,10 +6,10 @@ import {
   CardTitle,
   CardFooter,
 } from '@/components/ui/card';
-import SignInProviders from './SignInProviders';
 import { Shield } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { Logo } from '@/components/Logo';
+import * as motion from 'motion/react-client';
+import SignInProviders from './SignInProviders';
+import Logo from '@/components/Logo';
 
 export default function SignInForm() {
   return (

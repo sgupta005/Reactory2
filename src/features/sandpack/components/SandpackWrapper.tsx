@@ -10,7 +10,7 @@ import {
 
 import AddFiles from './AddFiles';
 import CopyButton from './CopyButton';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 type ModeEnum = 'SUBMIT' | 'PREVIEW';
 

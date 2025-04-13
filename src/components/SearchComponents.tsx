@@ -1,6 +1,6 @@
 import { Search as SearchIcon } from 'lucide-react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import * as motion from 'motion/react-client';
 
 export default function SearchComponents() {
   return (

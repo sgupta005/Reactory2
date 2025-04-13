@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useSignInWithProvider } from '../hooks/useSignInWithProvider';
 
 export default function SignInProviders() {
@@ -61,7 +61,7 @@ export default function SignInProviders() {
               type="button"
               onClick={() => signInWithProvider('google')}
               disabled={isLoading === 'google'}
-              className="w-full border-2 relative overflow-hidden  cursor-pointer"
+              className="w-full border-2 relative overflow-hidden  cursor-pointer hover:bg-muted"
             >
               {isLoading === 'google' ? (
                 <div className="h-4 w-4 animate-spin rounded-full border-2 border-muted border-t-current" />
@@ -91,7 +91,7 @@ export default function SignInProviders() {
               type="button"
               onClick={() => signInWithProvider('github')}
               disabled={isLoading === 'github'}
-              className="w-full border-2 relative overflow-hidden cursor-pointer"
+              className="w-full border-2 relative overflow-hidden cursor-pointer hover:bg-muted"
             >
               {isLoading === 'github' ? (
                 <div className="h-4 w-4 animate-spin rounded-full border-2 border-muted border-t-current" />

@@ -1,5 +1,3 @@
-'use client';
-
 import {
   Select,
   SelectContent,
@@ -8,7 +6,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { ComponentCard } from '@/features/show-components/components/ComponentCard';
-import { motion } from 'framer-motion';
+import * as motion from 'motion/react-client';
 
 const SAMPLE_COMPONENTS = [
   {

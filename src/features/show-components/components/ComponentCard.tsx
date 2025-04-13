@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Heart, Code2, Eye } from 'lucide-react';
-import { motion } from 'framer-motion';
+import * as motion from 'motion/react-client';
 
 interface ComponentCardProps {
   title: string;

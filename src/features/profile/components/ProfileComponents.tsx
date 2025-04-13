@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
 import { ComponentCard } from '@/features/show-components/components/ComponentCard';

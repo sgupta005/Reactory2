@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
+import * as motion from 'motion/react-client';
 import { cn } from '@/lib/utils';
 
-export function Logo({ className }: { className?: string }) {
+export default function Logo({ className }: { className?: string }) {
   return (
     <motion.div
       className={cn(
@@ -9,6 +9,7 @@ export function Logo({ className }: { className?: string }) {
         className
       )}
       whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
       <span className="text-2xl font-bold text-white">R</span>
     </motion.div>
