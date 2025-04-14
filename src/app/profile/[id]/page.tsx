@@ -110,9 +110,12 @@ const SAMPLE_COMPONENTS = [
   },
 ];
 
-async function ProfilePage({ params }: { params: { id: string } }) {
+type tParams = Promise<{ id: string }>;
+
+async function ProfilePage(props: { params: tParams }) {
+  const { id } = await props.params;
+  const profileId = id;
   const session = await auth();
-  const profileId = params.id;
   const isOwnProfile = session?.user?.id === profileId;
   const isLoggedIn = !!session;
 
