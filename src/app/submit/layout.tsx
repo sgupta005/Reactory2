@@ -8,12 +8,7 @@ async function SubmitLayout({ children }: { children: ReactNode }) {
   if (!session) {
     return redirect('/sign-in');
   }
-  return (
-    <div className="h-screen flex flex-col">
-      <Navbar />
-      <div className="flex justify-center">{children}</div>
-    </div>
-  );
+  return <div className="flex justify-center">{children}</div>;
 }
 
 export default SubmitLayout;
