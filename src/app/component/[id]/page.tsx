@@ -60,6 +60,7 @@ function ComponentPage() {
       />
 
       <SandpackProvider
+        files={files}
         template="react"
         theme="dark"
         options={{
