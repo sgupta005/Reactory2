@@ -5,29 +5,15 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1743013801268,
-      "tag": "0000_violet_gwen_stacy",
+      "when": 1744579901915,
+      "tag": "0000_gigantic_carlie_cooper",
       "breakpoints": true
     },
     {
       "idx": 1,
       "version": "7",
-      "when": 1743537992778,
-      "tag": "0001_noisy_sabra",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1744398247888,
-      "tag": "0002_curvy_squadron_sinister",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1744398299365,
-      "tag": "0003_mute_ares",
+      "when": 1744784974177,
+      "tag": "0001_burly_red_wolf",
       "breakpoints": true
     }
   ]

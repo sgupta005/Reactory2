@@ -1,6 +1,6 @@
 {
-  "id": "a29cb20e-6e38-4fdb-942b-a41ea19eb695",
-  "prevId": "869970c2-e215-452c-9805-317cc50f3bea",
+  "id": "c19a1c46-40e8-4655-8046-e32a1fee38f0",
+  "prevId": "3d93bb61-880d-4ad9-a82b-12e6ac9ecb02",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -254,6 +254,79 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
+    "public.component_files": {
+      "name": "component_files",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "componentId": {
+          "name": "componentId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "fileName": {
+          "name": "fileName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "content": {
+          "name": "content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "isEntryFile": {
+          "name": "isEntryFile",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "component_files_componentId_components_id_fk": {
+          "name": "component_files_componentId_components_id_fk",
+          "tableFrom": "component_files",
+          "tableTo": "components",
+          "columnsFrom": [
+            "componentId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.components": {
       "name": "components",
       "schema": "",
@@ -290,12 +363,6 @@
           "type": "uuid",
           "primaryKey": false,
           "notNull": false
-        },
-        "code": {
-          "name": "code",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
         },
         "description": {
           "name": "description",

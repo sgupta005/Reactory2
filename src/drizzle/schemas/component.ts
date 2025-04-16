@@ -3,17 +3,6 @@ import { id, createdAt, updatedAt, name } from '../schemaHelper';
 import { UserTable } from './user';
 import { relations } from 'drizzle-orm';
 
-export const fileTypeEnum = pgEnum('file_type', [
-  'jsx',
-  'tsx',
-  'js',
-  'ts',
-  'css',
-  'scss',
-  'json',
-  'other',
-]);
-
 export const ComponentTable = pgTable('components', {
   id: id,
   name: name,
@@ -29,7 +18,6 @@ export const ComponentFilesTable = pgTable('component_files', {
   componentId: uuid('componentId').references(() => ComponentTable.id),
   fileName: text('fileName').notNull(),
   content: text('content').notNull(),
-  fileType: fileTypeEnum('fileType').notNull(),
   isEntryFile: boolean('isEntryFile').default(false),
   createdAt: createdAt,
   updatedAt: updatedAt,

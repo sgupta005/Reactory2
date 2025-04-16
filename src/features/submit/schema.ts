@@ -8,7 +8,14 @@ export const submitComponentSchema = z.object({
     }),
   }),
   description: z.string(),
-  code: z.string().min(1, { message: 'Code is required' }),
+  files: z.record(
+    z.object({
+      code: z.string(),
+      hidden: z.boolean().optional(),
+      active: z.boolean().optional(),
+      readOnly: z.boolean().optional(),
+    })
+  ),
 });
 
 export type SubmitComponentSchema = z.infer<typeof submitComponentSchema>;

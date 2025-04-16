@@ -34,20 +34,20 @@ export default function SubmitComponentCode() {
           }}
         >
           <SandpackWrapper mode="SUBMIT" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center justify-end gap-3 mt-4 pb-4"
+          >
+            <Link href="/submit/details">
+              <Button size="lg" variant="secondary">
+                Back
+              </Button>
+            </Link>
+            <SubmitButton />
+          </motion.div>
         </SandpackProvider>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center justify-center gap-3 mr-0 ml-auto mt-4 pb-4"
-        >
-          <Link href="/submit/details">
-            <Button variant="outline" size="lg">
-              Back
-            </Button>
-          </Link>
-          <SubmitButton />
-        </motion.div>
       </div>
     </RequireComponentDetails>
   );

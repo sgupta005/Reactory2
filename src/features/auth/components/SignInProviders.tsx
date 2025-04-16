@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { motion } from 'motion/react';
 import { useSignInWithProvider } from '../hooks/useSignInWithProvider';
-
+import MiniSpinner from '@/components/MiniSpinner';
 export default function SignInProviders() {
   const { isLoading, signInWithProvider } = useSignInWithProvider();
 
@@ -64,7 +64,7 @@ export default function SignInProviders() {
               className="w-full border-2 relative overflow-hidden  cursor-pointer hover:bg-muted"
             >
               {isLoading === 'google' ? (
-                <div className="h-4 w-4 animate-spin rounded-full border-2 border-muted border-t-current" />
+                <MiniSpinner />
               ) : (
                 <>
                   <FaGoogle className="mr-2 h-4 w-4 text-red-500" />
@@ -94,7 +94,7 @@ export default function SignInProviders() {
               className="w-full border-2 relative overflow-hidden cursor-pointer hover:bg-muted"
             >
               {isLoading === 'github' ? (
-                <div className="h-4 w-4 animate-spin rounded-full border-2 border-muted border-t-current" />
+                <MiniSpinner />
               ) : (
                 <>
                   <FaGithub className="mr-2 h-4 w-4" />
