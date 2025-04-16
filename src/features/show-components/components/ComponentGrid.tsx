@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Select,
   SelectContent,
@@ -7,59 +9,34 @@ import {
 } from '@/components/ui/select';
 import { ComponentCard } from '@/features/show-components/components/ComponentCard';
 import * as motion from 'motion/react-client';
-
-const SAMPLE_COMPONENTS = [
-  {
-    id: 'responsive-navbar',
-    title: 'Responsive Navbar',
-    description: 'Clean and responsive navigation with mobile menu',
-    author: 'ReactMaster',
-    hearts: 482,
-    views: 4200,
-  },
-  {
-    id: 'data-table',
-    title: 'Data Table',
-    description: 'Sortable and filterable table component with pagination',
-    author: 'DataViz',
-    hearts: 593,
-    views: 6800,
-  },
-  {
-    id: 'modal-dialog',
-    title: 'Modal Dialog',
-    description: 'Accessible modal with animations and backdrop',
-    author: 'UIExpert',
-    hearts: 347,
-    views: 3500,
-  },
-  {
-    id: 'form-builder',
-    title: 'Form Builder',
-    description: 'Dynamic form with validation and custom inputs',
-    author: 'FormCrafter',
-    hearts: 268,
-    views: 2900,
-  },
-  {
-    id: 'notification-toast',
-    title: 'Notification Toast',
-    description: 'Customizable toast notifications with auto-dismiss',
-    author: 'Notifier',
-    hearts: 425,
-    views: 4800,
-  },
-  {
-    id: 'theme-switcher',
-    title: 'Theme Switcher',
-    description: 'Dark/light mode toggle with system preference detection',
-    author: 'ThemeWizard',
-    hearts: 312,
-    views: 3200,
-  },
-];
+import { useState, useEffect } from 'react';
+import { getComponents, ComponentCardType } from '../actions';
 
 export function ComponentGrid() {
+  const [filterType, setFilterType] = useState<'popular' | 'new'>('popular');
+  const [components, setComponents] = useState<ComponentCardType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchComponents() {
+      setIsLoading(true);
+      try {
+        const data = await getComponents(filterType);
+        setComponents(data);
+      } catch (error) {
+        console.error('Failed to fetch components:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchComponents();
+  }, [filterType]);
+
+  const handleFilterChange = (value: string) => {
+    setFilterType(value as 'popular' | 'new');
+  };
+
   return (
     <>
       <motion.div
@@ -68,7 +45,7 @@ export function ComponentGrid() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <Select defaultValue="popular">
+        <Select value={filterType} onValueChange={handleFilterChange}>
           <SelectTrigger className="px-4 cursor-pointer">
             <SelectValue placeholder="Filter by" />
           </SelectTrigger>
@@ -84,18 +61,34 @@ export function ComponentGrid() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 0.2 }}
       >
-        {SAMPLE_COMPONENTS.map((component, index) => (
-          <ComponentCard
-            key={component.id}
-            id={component.id}
-            title={component.title}
-            description={component.description}
-            author={component.author}
-            hearts={component.hearts}
-            views={component.views}
-            index={index}
-          />
-        ))}
+        {isLoading ? (
+          // Show loading placeholders
+          Array.from({ length: 6 }).map((_, index) => (
+            <div
+              key={`skeleton-${index}`}
+              className="rounded-xl border border-border h-[300px] animate-pulse bg-muted"
+            />
+          ))
+        ) : components.length > 0 ? (
+          // Show real components
+          components.map((component, index) => (
+            <ComponentCard
+              key={component.id}
+              id={component.id}
+              title={component.title}
+              description={component.description || ''}
+              author={component.author}
+              hearts={component.hearts}
+              views={component.views}
+              index={index}
+            />
+          ))
+        ) : (
+          // Show no components message
+          <div className="col-span-3 text-center py-12 text-muted-foreground">
+            No components found.
+          </div>
+        )}
       </motion.div>
     </>
   );

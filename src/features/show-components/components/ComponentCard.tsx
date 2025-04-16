@@ -5,7 +5,10 @@ import * as motion from 'motion/react-client';
 interface ComponentCardProps {
   title: string;
   description: string;
-  author: string;
+  author: {
+    name: string;
+    image: string;
+  };
   hearts: number;
   views: number;
   id: string;
@@ -73,9 +76,9 @@ export function ComponentCard({
           <div className="mt-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center text-[10px] text-accent-foreground font-bold">
-                {author.substring(0, 2).toUpperCase()}
+                {author.name.substring(0, 2).toUpperCase()}
               </div>
-              <span className="text-sm">{author}</span>
+              <span className="text-sm">{author.name}</span>
             </div>
             <div className="text-sm text-muted-foreground flex items-center gap-1">
               <Eye className="h-4 w-4" />

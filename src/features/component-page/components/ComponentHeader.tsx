@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Heart, Eye, User } from 'lucide-react';
 import { motion } from 'motion/react';
 import { formatDistanceToNow } from 'date-fns';
+import { useRouter } from 'next/navigation';
 
 type ComponentHeaderProps = {
   name: string;
@@ -27,6 +28,7 @@ export default function ComponentHeader({
   // Placeholder data for likes and views
   const likes = 42;
   const views = 189;
+  const router = useRouter();
 
   return (
     <motion.div
@@ -95,7 +97,14 @@ export default function ComponentHeader({
           )}
         </Avatar>
         <div>
-          <p className="text-sm font-medium">{author?.name || 'Anonymous'}</p>
+          <p
+            className="text-sm font-medium cursor-pointer hover:underline"
+            onClick={() => {
+              router.push(`/profile/${author?.id}`);
+            }}
+          >
+            {author?.name || 'Anonymous'}
+          </p>
           {createdAt && (
             <p className="text-xs text-muted-foreground">
               Created {formatDistanceToNow(createdAt, { addSuffix: true })}
