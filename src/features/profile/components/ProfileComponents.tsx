@@ -49,7 +49,7 @@ function ProfileComponents({
 
         <TabsContent value="components" className="space-y-6">
           <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-bold">My Components</h2>
+            <h2 className="text-2xl font-bold">Components</h2>
             {isOwnProfile && (
               <Button asChild>
                 <Link href="/submit/details">Upload Component</Link>
