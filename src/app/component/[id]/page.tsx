@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {
   useSearchParams,
   useRouter,
@@ -8,22 +8,22 @@ import {
   useParams,
 } from 'next/navigation';
 import { useSubmitComponentStore } from '@/features/submit/store';
-import {
-  getComponentData,
-  ComponentWithFiles,
-} from '@/features/component-page/actions';
-import SandpackWrapper from '@/features/sandpack/components/SandpackWrapper';
+import { useComponentData } from '@/features/component-page/hooks/useComponentData';
+import { motion } from 'motion/react';
 import { SandpackProvider } from '@codesandbox/sandpack-react';
+import ErrorState from '@/features/component-page/components/ErrorState';
+import LoadingState from '@/features/component-page/components/LoadingState';
+import SandpackWrapper from '@/features/sandpack/components/SandpackWrapper';
+import ComponentHeader from '@/features/component-page/components/ComponentHeader';
 
 function ComponentPage() {
   const params = useParams<{ id: string }>();
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const [componentData, setComponentData] = useState<ComponentWithFiles | null>(
-    null
-  );
-  const [isLoading, setIsLoading] = useState(true);
+
+  const { data, isLoading, error } = useComponentData(params.id);
+  const { files } = data || {};
 
   // Handle reset state from query params
   useEffect(() => {
@@ -35,54 +35,48 @@ function ComponentPage() {
     }
   }, [searchParams, router, pathname]);
 
-  // Fetch component data when the component mounts or id changes
-  useEffect(() => {
-    async function loadComponentData() {
-      setIsLoading(true);
-      try {
-        const data = await getComponentData(params.id);
-        setComponentData(data);
-      } catch (error) {
-        console.error('Error loading component data:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    loadComponentData();
-  }, [params.id]);
-
+  // Loading state
   if (isLoading) {
-    return <div>Loading component data...</div>;
+    return <LoadingState />;
   }
 
-  if (!componentData || !componentData.component) {
-    return <div>Component not found or {componentData?.error}</div>;
+  // Error state
+  if (error || !data || !data.component) {
+    return <ErrorState message={error || 'Component not found'} />;
   }
-
-  // Destructure component data for easier access
-  const { component, files } = componentData;
 
   return (
-    <SandpackProvider
-      files={files}
-      template="react"
-      theme="dark"
-      options={{
-        externalResources: ['https://cdn.tailwindcss.com'],
-      }}
-      customSetup={{
-        entry: 'index.js',
-        dependencies: {
-          'framer-motion': 'latest',
-          motion: 'latest',
-          'react-icons': 'latest',
-          'lucide-react': 'latest',
-        },
-      }}
+    <motion.div
+      className="container mx-auto px-4 py-8 max-w-7xl"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
     >
-      <SandpackWrapper mode="PREVIEW" />
-    </SandpackProvider>
+      <ComponentHeader
+        name={data.component.name}
+        description={data.component.description}
+        createdAt={data.component.createdAt}
+        author={data.component.author}
+      />
+
+      <SandpackProvider
+        template="react"
+        theme="dark"
+        options={{
+          externalResources: ['https://cdn.tailwindcss.com'],
+        }}
+        customSetup={{
+          dependencies: {
+            'framer-motion': 'latest',
+            motion: 'latest',
+            'react-icons': 'latest',
+            'lucide-react': 'latest',
+          },
+        }}
+      >
+        <SandpackWrapper mode="PREVIEW" />
+      </SandpackProvider>
+    </motion.div>
   );
 }
 

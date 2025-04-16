@@ -3,6 +3,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
 import { SessionProvider } from 'next-auth/react';
 import { SandPackCSS } from '@/components/SandpackStyles';
+import { Navbar } from '@/components/Navbar';
 
 export default function RootLayout({
   children,
@@ -22,7 +23,8 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <main>{children}</main>
+            <Navbar />
+            <>{children}</>
             <Toaster />
           </ThemeProvider>
         </SessionProvider>
