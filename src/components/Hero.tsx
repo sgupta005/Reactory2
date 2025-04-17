@@ -16,7 +16,7 @@ export function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Discover the web's top react components
+          Discover the web's best react components
         </motion.h1>
         <motion.p
           className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto"
