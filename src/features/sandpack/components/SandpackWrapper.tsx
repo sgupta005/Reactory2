@@ -43,6 +43,7 @@ export default function SandpackWrapper({ mode }: { mode: ModeEnum }) {
                   <Code className="w-4 h-4" /> Editor
                 </TabsTrigger>
                 <TabsTrigger
+                  id="preview-tab"
                   value="preview"
                   className="flex items-center gap-2 cursor-pointer"
                 >

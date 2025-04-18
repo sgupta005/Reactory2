@@ -11,6 +11,9 @@ importers:
       '@auth/drizzle-adapter':
         specifier: ^1.8.0
         version: 1.8.0
+      '@codesandbox/sandpack-client':
+        specifier: ^2.19.8
+        version: 2.19.8
       '@codesandbox/sandpack-react':
         specifier: ^2.20.0
         version: 2.20.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
