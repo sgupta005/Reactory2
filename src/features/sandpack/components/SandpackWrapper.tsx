@@ -2,10 +2,11 @@
 
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Code, Eye } from 'lucide-react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   SandpackCodeEditor,
   SandpackPreview,
+  SandpackPreviewRef,
 } from '@codesandbox/sandpack-react';
 
 import AddFiles from './AddFiles';
@@ -16,6 +17,9 @@ type ModeEnum = 'SUBMIT' | 'PREVIEW';
 
 export default function SandpackWrapper({ mode }: { mode: ModeEnum }) {
   const [activeTab, setActiveTab] = useState('editor');
+  const previewRef = useRef<SandpackPreviewRef>(null);
+
+  console.log(previewRef.current?.getClient());
 
   return (
     <motion.div
@@ -77,6 +81,7 @@ export default function SandpackWrapper({ mode }: { mode: ModeEnum }) {
                 }}
               >
                 <SandpackPreview
+                  ref={previewRef}
                   showNavigator={true}
                   style={{ height: '500px' }}
                 />
